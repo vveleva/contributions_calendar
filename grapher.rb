@@ -54,7 +54,7 @@ ignore_dates = [
 
 commit_dates.each do |date|
   next if ignore_dates.include?(date)
-  next if date - Date.new(2015, 4, 9).to_time >= 0
+  next if date - Date.new(2015, 1, 12).to_time >= 0
   # next unless date - Date.new(2014, 12, 23).to_time >= 0 && date - Date.new(2015, 1, 15).to_time < 0
   File.open('random_list_of_dates', 'w') { |f| f << str_commit_dates.shuffle.first(12).join("\n") }
   `GIT_AUTHOR_DATE="#{date}" GIT_COMMITTER_DATE="#{date}" git commit -am "#{date}_#{rand(10 ** 50..9 * 10 ** 50).to_s(36)}"`
